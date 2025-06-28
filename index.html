@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>LeetBuddy</h1>
+    <p>Track your LeetCode progress and get smart question recommendations.</p>
+
+    <div class="input-section">
+      <input type="text" id="usernameInput" placeholder="Enter your LeetCode username" />
+      <button id="fetchBtn">Fetch Recent Solves</button>
+    </div>
+
+    <div id="statusMessage"></div>
+
+    <div id="solvedList" class="question-list">
+      <!-- Solved questions will show here -->
+    </div>
+  </div>
+    <script src="index.js"></script>
+</body>
+</html>
