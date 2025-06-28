@@ -111,3 +111,11 @@ button:hover {
   margin-top: 4px;
   font-size: 13px;
 }
+#toggleViewBtn {
+  color: #fff;
+  padding: 10px 20px;
+  border: 1px solid #444;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
