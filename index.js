@@ -4,6 +4,7 @@ const fetchBtn = document.getElementById("fetchBtn");
 const usernameInput = document.getElementById("usernameInput");
 const solvedList = document.getElementById("solvedList");
 const statusMessage = document.getElementById("statusMessage");
+const toggleBtn = document.getElementById("toggleViewBtn");
 
 const VERCEL_ENDPOINT = "https://leet-code-guru.vercel.app/api/fetchSolved";
 
@@ -29,14 +30,23 @@ window.onload = () => {
 
 fetchBtn.addEventListener("click", async () => {
   const username = usernameInput.value.trim();
+  const toggleBtn = document.getElementById("toggleViewBtn");
+  const recommendSection = document.getElementById("recommendSection");
+  const recommendations = document.getElementById("recommendations");
 
   if (!username) {
     statusMessage.innerText = "Please enter a valid username.";
+    toggleBtn.style.display = "none";
+    recommendSection.style.display = "none";
+    recommendations.innerHTML = "";
     return;
   }
 
   statusMessage.innerText = "Fetching recent solved problems...";
   solvedList.innerHTML = "";
+  toggleBtn.style.display = "none";
+  recommendSection.style.display = "none";
+  recommendations.innerHTML = "";
 
   try {
     const response = await fetch(VERCEL_ENDPOINT, {
@@ -52,6 +62,9 @@ fetchBtn.addEventListener("click", async () => {
 
     if (!submissions.length) {
       statusMessage.innerText = `No recent solves found for @${username}.`;
+      toggleBtn.style.display = "none";
+      recommendSection.style.display = "none";
+      recommendations.innerHTML = "";
       return;
     }
 
@@ -67,8 +80,12 @@ fetchBtn.addEventListener("click", async () => {
   } catch (err) {
     console.error(err);
     statusMessage.innerText = "Error fetching data. Check your network or try again later.";
+    toggleBtn.style.display = "none";
+    recommendSection.style.display = "none";
+    recommendations.innerHTML = "";
   }
 });
+
 
 function displaySolvedQuestions(problems) {
   const MAX_VISIBLE = 5;
@@ -83,6 +100,13 @@ function displaySolvedQuestions(problems) {
 
   function renderList() {
     solvedList.innerHTML = "";
+
+    if (problems.length === 0) {
+      solvedList.innerHTML = "<p>No solved problems to display.</p>";
+      toggleBtn.style.display = "none";
+      document.getElementById("recommendSection").style.display = "none";
+      return;
+    }
 
     const visibleProblems = expanded ? problems : problems.slice(0, MAX_VISIBLE);
 
@@ -106,20 +130,23 @@ function displaySolvedQuestions(problems) {
       solvedList.appendChild(item);
     });
 
-    // Toggle button visibility
+    // Show/hide view toggle button
     if (problems.length > MAX_VISIBLE) {
       toggleBtn.style.display = "block";
       toggleBtn.innerText = expanded ? "Collapse" : "View All";
     } else {
       toggleBtn.style.display = "none";
     }
+
+    // Show recommendation controls
+    document.getElementById("recommendSection").style.display = "flex";
   }
 
-  // Attach toggle handler
   toggleBtn.onclick = () => {
     expanded = !expanded;
     renderList();
   };
+
   renderList();
 }
 
