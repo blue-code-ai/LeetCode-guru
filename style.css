@@ -1,121 +1,183 @@
 /* style.css - Dark Theme */
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #0d1117;
-  color: #c9d1d9;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
-  width: 100%;
-  max-width: 700px;
-  background: #161b22;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid #30363d;
+    width: 100%;
+    max-width: 700px;
+    background: #161b22;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #30363d;
 }
 
 h1 {
-  font-size: 2rem;
-  color: #58a6ff;
-  margin-bottom: 10px;
+    font-size: 2rem;
+    color: #58a6ff;
+    margin-bottom: 10px;
 }
 
-p {
-  margin-bottom: 20px;
-  color: #8b949e;
+#introText {
+    margin-bottom: 20px;
+    color: #8b949e;
 }
 
 .input-section {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 input[type="text"] {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #30363d;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  border-radius: 6px;
-  font-size: 16px;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
 input[type="text"]::placeholder {
-  color: #6e7681;
+    color: #6e7681;
 }
 
 button {
-  padding: 12px 20px;
-  font-size: 16px;
-  background-color: #238636;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #238636;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 button:hover {
-  background-color: #2ea043;
+    background-color: #2ea043;
 }
 
 #statusMessage {
-  margin-bottom: 10px;
-  color: #6e7681;
-  font-style: italic;
+    margin-bottom: 10px;
+    color: #6e7681;
+    font-style: italic;
 }
 
 .question-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .question-item {
-  background-color: #21262d;
-  padding: 15px 20px;
-  border-left: 6px solid #238636;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+    background-color: #21262d;
+    padding: 15px 20px;
+    border-left: 6px solid #238636;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
 }
 
 .question-item:hover {
-  background-color: #30363d;
+    background-color: #30363d;
 }
 
 .question-item a {
-  color: #58a6ff;
-  text-decoration: none;
-  font-weight: bold;
+    color: #58a6ff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .question-item a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .question-item small {
-  display: block;
-  color: #8b949e;
-  margin-top: 4px;
-  font-size: 13px;
+    display: block;
+    color: #8b949e;
+    margin-top: 4px;
+    font-size: 13px;
 }
+
 #toggleViewBtn {
-  color: #fff;
-  padding: 10px 20px;
-  border: 1px solid #444;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#recommendSection {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    color: #c9d1d9;
+}
+
+#recommendSection label {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#chooseRecommendationText {
+    margin-left: 20px;
+
+}
+
+#recommendType {
+    margin-left: 20px;
+    padding: 10px;
+    max-width: 300px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#getRecommendBtn {
+    margin-left: 20px;
+    max-width: 200px;
+    padding: 10px 15px;
+    background-color: #238636;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#getRecommendBtn:hover {
+    background-color: #2ea043;
+}
+#recommendations{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#recommendations h3 {
+    font-size: 18px;
+    color: #c9d1d9;
+    margin: 8px 0 8px 0;
 }
