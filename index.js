@@ -5,12 +5,10 @@ const usernameInput = document.getElementById("usernameInput");
 const solvedList = document.getElementById("solvedList");
 const statusMessage = document.getElementById("statusMessage");
 
-const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
-const GRAPHQL_ENDPOINT = CORS_PROXY + "https://leetcode.com/graphql";
+const VERCEL_ENDPOINT = "https://leet-code-guru.vercel.app/api/fetchSolved";
 
 const MAX_RESULTS = 20;
 
-// Try loading from localStorage on page load
 window.onload = () => {
   const cached = JSON.parse(localStorage.getItem("leetbuddy_user"));
 
@@ -41,48 +39,34 @@ fetchBtn.addEventListener("click", async () => {
   solvedList.innerHTML = "";
 
   try {
-    const response = await fetch(GRAPHQL_ENDPOINT, {
+    const response = await fetch(VERCEL_ENDPOINT, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        operationName: "recentAcSubmissions",
-        variables: { username },
-        query: `
-          query recentAcSubmissions($username: String!) {
-            recentAcSubmissionList(username: $username) {
-              title
-              titleSlug
-              timestamp
-            }
-          }
-        `,
-      }),
+      body: JSON.stringify({ username })
     });
 
     const data = await response.json();
-    const submissions = data.data?.recentAcSubmissionList || [];
+    const submissions = data || [];
 
     if (!submissions.length) {
       statusMessage.innerText = `No recent solves found for @${username}.`;
       return;
     }
 
-    // Limit results for display
     const recentSolved = submissions.slice(0, MAX_RESULTS);
     displaySolvedQuestions(recentSolved);
 
-    // Save to localStorage
-    localStorage.setItem(
-      "leetbuddy_user",
-      JSON.stringify({ username, recentSolved })
-    );
+    localStorage.setItem("leetbuddy_user", JSON.stringify({
+      username,
+      recentSolved
+    }));
 
     statusMessage.innerText = `Showing recent solved problems for @${username}`;
   } catch (err) {
     console.error(err);
-    statusMessage.innerText = "Error fetching data. Maybe username is wrong or LeetCode is blocking us.";
+    statusMessage.innerText = "Error fetching data. Check your network or try again later.";
   }
 });
 
