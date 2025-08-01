@@ -2,51 +2,64 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeetCode Guru</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4841DWND3E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-4841DWND3E');
-  </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LeetCode Guru</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container">
-    <h1>LeetCode Guru</h1>
-    <p id="introText">Track your LeetCode progress and get smart question recommendations.</p>
+	<div class="container">
+		<h1>LeetCode Guru</h1>
+		<p id="introText">Track your LeetCode progress and get smart question recommendations.</p>
+		<input type="checkbox" id="isPremiumUser" />
+		<label for="isPremiumUser" id="isPremiumUserLabel">I'm a LeetCode Premium user</label>
+		<div class="input-section">
+			<input type="text" id="usernameInput" placeholder="Enter your LeetCode username" />
+			<button id="fetchBtn">Fetch Recent Solves</button>
+		</div>
 
-    <div class="input-section">
-      <input type="text" id="usernameInput" placeholder="Enter your LeetCode username" />
-      <button id="fetchBtn">Fetch Recent Solves</button>
-    </div>
+		<div id="statusMessage"></div>
 
-    <div id="statusMessage"></div>
+		<div id="solvedList" class="question-list"></div>
+		<button id="toggleViewBtn" style="display: none;">View All</button>
+		<div id="recommendSection" style="display: none;">
 
-    <div id="solvedList" class="question-list"></div>
-    <button id="toggleViewBtn" style="display: none;">View All</button>
-    <div id="recommendSection" style="display: none;">
-      <label for="recommendType">Get Recommendations:</label>
-      <p id="chooseRecommendationText">Choose recommendations type</p>
-      <select id="recommendType">
-        <option value="random">Random</option>
-        <option value="same-topic-harder">Same Topic, Harder</option>
-        <option value="same-topic">Same Topic</option>
-        <option value="different-topic-same">Different Topic, Same Difficulty</option>
-      </select>
-      <button id="getRecommendBtn">Recommend Questions</button>
-    </div>
-    <div id="recommendations"></div><br><hr><br>
-    <p style="color: #8b949e;">*LeetCode is a trademark of LeetCode Inc. This tool is not affiliated with or endorsed by LeetCode.</p>
-    <p style="color: #8b949e;">*LeetCode Guru is a tool made for non-commercial use only.</p>
-  </div>
+			<label for="recommendType">Get Recommendations:</label>
+			<div class="filter-section">
+				<div class="difficulty-wrapper">
+					<label for="difficultySelect">Difficulty:</label>
+					<select id="difficultySelect">
+						<option value="all">All</option>
+						<option value="Easy">Easy</option>
+						<option value="Medium">Medium</option>
+						<option value="Hard">Hard</option>
+					</select>
+				</div>
 
-  <script src="index.js"></script>
+				<div class="topics-wrapper">
+					<button id="toggleTopicsBtn">+ Include Topics</button>
+					<div id="topicSelector" class="flex-grid">
+						<div id="topicControls">
+							<button id="selectAllBtn" class="topic-btn">Select All</button>
+						</div>
+
+						<!-- Topic buttons will be inserted dynamically -->
+					</div>
+				</div>
+			</div>
+
+			<button id="getRecommendBtn">Recommend Questions</button>
+		</div>
+		<div id="recommendations"></div><br>
+		<hr><br>
+		<p style="color: #8b949e;">*LeetCode is a trademark of LeetCode Inc. This tool is not affiliated with or
+			endorsed by
+			LeetCode.</p>
+		<p style="color: #8b949e;">*LeetCode Guru is a tool made for non-commercial use only.</p>
+	</div>
+
+	<script src="index.js"></script>
 </body>
+
 </html>
